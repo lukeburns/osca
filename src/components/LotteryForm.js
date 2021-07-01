@@ -27,63 +27,63 @@ const LotteryForm = ({ countdown, onSubmit, currentEntryValues = {}, lottery }) 
     ]
   )
 
-  const startDate = new Date(lottery.start).toDateString();
-  const endDate = new Date(lottery.end).toDateString();
+  const startDate = new Date(lottery.start).toDateString()
+  const endDate = new Date(lottery.end).toDateString()
 
-  function validateName(value) {
+  function validateName (value) {
     let error
     if (!value) {
-      error = "Name is required"
+      error = 'Name is required'
     }
     return error
   }
 
-  function validateTNumber(number) {
+  function validateTNumber (number) {
     const tNumberRegEx = /^\d{7,8}$/i
 
     let error
     if (!number) {
-      error = "T-Number is required"
+      error = 'T-Number is required'
     } else if (!tNumberRegEx.test(number)) {
-      error = "Invalid T Number. (Leave off the T) 😱" // is this 8 digits max?      
+      error = 'Invalid T Number. (Leave off the T) 😱' // is this 8 digits max?
     }
     return error
   }
 
-  function validateOCMR(ocmr) {
+  function validateOCMR (ocmr) {
     const ocmrRegEx = /^\d{1,5}$/i
 
     let error
     if (!ocmr) {
-      error = "OCMR is required"
+      error = 'OCMR is required'
     } else if (!ocmrRegEx.test(ocmr)) {
-      error = "Invalid OCMR. (1-5 digits) 😱"
+      error = 'Invalid OCMR. (1-5 digits) 😱'
     }
     return error
   }
 
-  function validatePhoneNumber(number) {
+  function validatePhoneNumber (number) {
     const phoneRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
 
     let error
     if (!number) {
-      error = "Phone number is required"
+      error = 'Phone number is required'
     } else if (!phoneRegex.test(number)) {
-      error = "Invalid phone number 😱"
+      error = 'Invalid phone number 😱'
     }
     return error
   }
 
   return (
-    <Flex shadow="md" w="100%" borderRadius="lg" borderWidth="1px" direction="column" justifyContent="flex-start" mt={12} alignItems="center" pb={8}>
-      <Center mb={4} p={4} w="100%" shadow="sm">
-        <Stack textAlign="center" spacing={1}>
+    <Flex shadow='md' w='100%' borderRadius='lg' borderWidth='1px' direction='column' justifyContent='flex-start' mt={12} alignItems='center' pb={8}>
+      <Center mb={4} p={4} w='100%' shadow='sm'>
+        <Stack textAlign='center' spacing={1}>
           <Heading>2021 Fall Lottery</Heading>
-          <Text color="gray.500" fontWeight="thin" m={2}>{countdown} remaining</Text>
+          <Text color='gray.500' fontWeight='thin' m={2}>{countdown} remaining</Text>
         </Stack>
       </Center>
-      <Stack textAlign="left" spacing={4} p={8} my={4}>
-        <Text fontWeight="medium" fontSize="lg">
+      <Stack textAlign='left' spacing={4} p={8} my={4}>
+        <Text fontWeight='medium' fontSize='lg'>
           The OSCA Lottery Process
         </Text>
         <Text>
@@ -98,7 +98,7 @@ const LotteryForm = ({ countdown, onSubmit, currentEntryValues = {}, lottery }) 
           Potential members of special interest coops (Old Barrows, Third World Co-op, and Third World Social Justice Co-op Housing)
           must fill out an additional special interest application prior to February 12th at 11:59pm separate from this lottery.
         </Text>
-        <Text fontWeight="medium">
+        <Text fontWeight='medium'>
           The lottery is open from {startDate} until {endDate}.
         </Text>
         <Text>
@@ -107,19 +107,19 @@ const LotteryForm = ({ countdown, onSubmit, currentEntryValues = {}, lottery }) 
       </Stack>
       <Formik
         initialValues={{
-          firstName: "",
-          lastName: "",
-          OCMR: "",
-          tNumber: "",
-          phoneNumber: "",
-          country: "",
-          state: "",
-          city: "",
-          addressLineOne: "",
-          addressLineTwo: "",
-          gender: "",
-          genderComfortableWith: "",
-          genderNotComfortableWith: "",
+          firstName: '',
+          lastName: '',
+          OCMR: '',
+          tNumber: '',
+          phoneNumber: '',
+          country: '',
+          state: '',
+          city: '',
+          addressLineOne: '',
+          addressLineTwo: '',
+          gender: '',
+          genderComfortableWith: '',
+          genderNotComfortableWith: '',
           comfortableWithAnyRoommate: false,
           interestedInAccessCo: false,
           preferences: [],
@@ -137,158 +137,160 @@ const LotteryForm = ({ countdown, onSubmit, currentEntryValues = {}, lottery }) 
           <Form>
             <FormikOnSubmit>
               <Stack spacing={6} p={2}>
-                <Stack direction={["column", "row"]} spacing={2}>
-                  <Field name="firstName" validate={validateName}>
+                <Stack direction={['column', 'row']} spacing={2}>
+                  <Field name='firstName' validate={validateName}>
                     {({ field, form }) => (
                       <FormControl isInvalid={form.errors.firstName && form.touched.firstName}>
-                        <FormLabel htmlFor="firstName">First Name</FormLabel>
-                        <Input {...field} id="firstName" placeholder="Harkness" />
+                        <FormLabel htmlFor='firstName'>First Name</FormLabel>
+                        <Input {...field} id='firstName' placeholder='Harkness' />
                         <FormErrorMessage>{form.errors.firstName}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
-                  <Field name="lastName" validate={validateName}>
+                  <Field name='lastName' validate={validateName}>
                     {({ field, form }) => (
                       <FormControl isInvalid={form.errors.lastName && form.touched.lastName}>
-                        <FormLabel htmlFor="lastName">Last Name</FormLabel>
-                        <Input {...field} id="lastName" placeholder="Forever" />
+                        <FormLabel htmlFor='lastName'>Last Name</FormLabel>
+                        <Input {...field} id='lastName' placeholder='Forever' />
                         <FormErrorMessage>{form.errors.lastName}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
                 </Stack>
-                <Stack direction={["column", "row"]} spacing={2}>
-                  <Field name="tNumber" validate={validateTNumber}>
+                <Stack direction={['column', 'row']} spacing={2}>
+                  <Field name='tNumber' validate={validateTNumber}>
                     {({ field, form }) => (
                       <FormControl isInvalid={form.errors.tNumber && form.touched.tNumber}>
-                        <FormLabel htmlFor="tNumber">T-Number</FormLabel>
-                        <Input {...field} id="tNumber" placeholder="12345678" />
+                        <FormLabel htmlFor='tNumber'>T-Number</FormLabel>
+                        <Input {...field} id='tNumber' placeholder='12345678' />
                         <FormErrorMessage>{form.errors.tNumber}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
-                  <Field name="OCMR" validate={validateOCMR}>
+                  <Field name='OCMR' validate={validateOCMR}>
                     {({ field, form }) => (
                       <FormControl isInvalid={form.errors.OCMR && form.touched.OCMR}>
-                        <FormLabel htmlFor="OCMR">OCMR</FormLabel>
-                        <Input {...field} id="OCMR" placeholder="1234" />
+                        <FormLabel htmlFor='OCMR'>OCMR</FormLabel>
+                        <Input {...field} id='OCMR' placeholder='1234' />
                         <FormErrorMessage>{form.errors.OCMR}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
                 </Stack>
-                <Stack direction={["column", "row"]} spacing={2}>
-                  <Field name="phoneNumber" validate={validatePhoneNumber}>
+                <Stack direction={['column', 'row']} spacing={2}>
+                  <Field name='phoneNumber' validate={validatePhoneNumber}>
                     {({ field, form }) => (
                       <FormControl isInvalid={form.errors.phoneNumber && form.touched.phoneNumber}>
-                        <FormLabel htmlFor="phoneNumber">Phone Number</FormLabel>
-                        <Input {...field} id="phoneNumber" placeholder="123-456-7890" />
+                        <FormLabel htmlFor='phoneNumber'>Phone Number</FormLabel>
+                        <Input {...field} id='phoneNumber' placeholder='123-456-7890' />
                         <FormErrorMessage>{form.errors.phoneNumber}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
-                  <Field name="country">
+                  <Field name='country'>
                     {({ field, form }) => (
                       <FormControl>
-                        <FormLabel htmlFor="country">Country</FormLabel>
-                        <Input {...field} id="country" placeholder="USA" />
+                        <FormLabel htmlFor='country'>Country</FormLabel>
+                        <Input {...field} id='country' placeholder='USA' />
                       </FormControl>
                     )}
                   </Field>
                 </Stack>
-                <Stack direction={["column", "row"]} spacing={2}>
-                  <Field name="city">
+                <Stack direction={['column', 'row']} spacing={2}>
+                  <Field name='city'>
                     {({ field, form }) => (
                       <FormControl>
-                        <FormLabel htmlFor="city">City</FormLabel>
-                        <Input {...field} id="city" placeholder="Oberlin" />
+                        <FormLabel htmlFor='city'>City</FormLabel>
+                        <Input {...field} id='city' placeholder='Oberlin' />
                       </FormControl>
                     )}
                   </Field>
-                  <Field name="state">
+                  <Field name='state'>
                     {({ field, form }) => (
                       <FormControl>
-                        <FormLabel htmlFor="state">State</FormLabel>
-                        <Input {...field} id="state" placeholder="OH" />
+                        <FormLabel htmlFor='state'>State</FormLabel>
+                        <Input {...field} id='state' placeholder='OH' />
                       </FormControl>
                     )}
                   </Field>
                 </Stack>
-                <Stack direction={["column", "row"]} spacing={2}>
-                  <Field name="addressLineOne">
+                <Stack direction={['column', 'row']} spacing={2}>
+                  <Field name='addressLineOne'>
                     {({ field, form }) => (
                       <FormControl>
-                        <FormLabel htmlFor="addressLineOne">Address Line One</FormLabel>
-                        <Input {...field} id="addressLineOne" placeholder="135 West Lorain" />
+                        <FormLabel htmlFor='addressLineOne'>Address Line One</FormLabel>
+                        <Input {...field} id='addressLineOne' placeholder='135 West Lorain' />
                       </FormControl>
                     )}
                   </Field>
-                  <Field name="addressLineTwo">
+                  <Field name='addressLineTwo'>
                     {({ field, form }) => (
                       <FormControl>
-                        <FormLabel htmlFor="addressLineTwo">Address Line Two</FormLabel>
-                        <Input {...field} id="addressLineTwo" placeholder="Apartment 2" />
+                        <FormLabel htmlFor='addressLineTwo'>Address Line Two</FormLabel>
+                        <Input {...field} id='addressLineTwo' placeholder='Apartment 2' />
                       </FormControl>
                     )}
                   </Field>
                 </Stack>
                 <Divider />
                 <Stack spacing={1} >
-                  <Text fontWeight="normal">Housing Questionnaire</Text>
-                  <Text fontWeight="thin" fontSize="sm">Dining-only members need not fill this out.</Text>
+                  <Text fontWeight='normal'>Housing Questionnaire</Text>
+                  <Text fontWeight='thin' fontSize='sm'>Dining-only members need not fill this out.</Text>
                 </Stack>
-                <Field name="gender">
+                <Field name='gender'>
                   {({ field, form }) => (
                     <FormControl>
-                      <FormLabel htmlFor="gender">Gender</FormLabel>
-                      <Input {...field} id="gender" placeholder="?" />
+                      <FormLabel htmlFor='gender'>Gender</FormLabel>
+                      <Input {...field} id='gender' placeholder='?' />
                     </FormControl>
                   )}
                 </Field>
-                <Field name="genderComfortableWith">
+                <Field name='genderComfortableWith'>
                   {({ field, form }) => (
                     <FormControl>
-                      <FormLabel htmlFor="genderComfortableWith">Gender(s) I'm comfortable living with</FormLabel>
-                      <Input {...field} id="genderComfortableWith" placeholder="Leave blank for all" />
+                      <FormLabel htmlFor='genderComfortableWith'>Gender(s) I'm comfortable living with</FormLabel>
+                      <Input {...field} id='genderComfortableWith' placeholder='Leave blank for all' />
                     </FormControl>
                   )}
                 </Field>
-                <Field name="genderNotComfortableWith">
+                <Field name='genderNotComfortableWith'>
                   {({ field, form }) => (
                     <FormControl>
-                      <FormLabel htmlFor="genderNotComfortableWith">Gender(s) I'm NOT comfortable living with</FormLabel>
-                      <Input {...field} id="genderNotComfortableWith" placeholder="Separate with semi-colons" />
+                      <FormLabel htmlFor='genderNotComfortableWith'>Gender(s) I'm NOT comfortable living with</FormLabel>
+                      <Input {...field} id='genderNotComfortableWith' placeholder='Separate with semi-colons' />
                     </FormControl>
                   )}
                 </Field>
-                <Field type="checkbox" name="comfortableWithAnyRoommate">
+                <Field type='checkbox' name='comfortableWithAnyRoommate'>
                   {({ field }) => (
                     <Checkbox
                       {...field}
-                      id="comfortableWithAnyRoommate"
-                      colorScheme="teal"
-                      name="comfortableWithAnyRoommate"
+                      isChecked={field.value}
+                      id='comfortableWithAnyRoommate'
+                      colorScheme='teal'
+                      name='comfortableWithAnyRoommate'
                       isChecked
                     >
-                      <Text textAlign="left">I am comfortable living with any roommate regardless of assigned sex or gender.</Text>
+                      <Text textAlign='left'>I am comfortable living with any roommate regardless of assigned sex or gender.</Text>
                     </Checkbox>
                   )}
                 </Field>
-                <Field type="checkbox" name="interestedInAccessCo">
+                <Field type='checkbox' name='interestedInAccessCo'>
                   {({ field }) => (
                     <Checkbox
                       {...field}
-                      id="interestedInAccessCo"
-                      colorScheme="teal"
-                      name="interestedInAccessCo"
+                      isChecked={field.value}
+                      id='interestedInAccessCo'
+                      colorScheme='teal'
+                      name='interestedInAccessCo'
                     >
-                      <Text textAlign="left">I would like to be contacted by an AccessCo about accessibility needs in OSCA.</Text>
+                      <Text textAlign='left'>I would like to be contacted by an AccessCo about accessibility needs in OSCA.</Text>
                     </Checkbox>
                   )}
                 </Field>
                 <Divider />
                 <Text>Coop Preference Ranking: </Text>
-                <Field name="preferences">
+                <Field name='preferences'>
                   {({ field, form }) => (
                     <FormControl>
                       <SortableMultiSelect {...field} options={choices} onChange={selectedOptions => {
@@ -298,12 +300,12 @@ const LotteryForm = ({ countdown, onSubmit, currentEntryValues = {}, lottery }) 
                   )}
                 </Field>
                 <Button
-                  alignSelf="center"
+                  alignSelf='center'
                   mt={4}
-                  colorScheme="teal"
+                  colorScheme='teal'
                   isLoading={props.isSubmitting}
-                  type="submit"
-                  maxW="12rem"
+                  type='submit'
+                  maxW='12rem'
                 >
                   Submit
                 </Button>
